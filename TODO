@@ -1,7 +1,5 @@
 - Seed for bar, products and association (current_prices)
-- Install react-redux for state management
 - Install react-router for handling URL routing
-- Install react-bootstrap for automatic responsive layout (mobile friendly)
 - Set up unit tests, specially for actions and reducers
 - Set up unit tests for presentational components
 - Page for list of bars (id, name, latlng, image_url) with functionalities: search or select item from list
