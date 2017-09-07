@@ -5,7 +5,7 @@ import ListBar from '../components/listBar';
 
 class Bars extends Component {
 	render() {
-		const { bars } = this.props;
+		const { list } = this.props;
 		return (
 			<div>
 				<div className="row">
@@ -15,7 +15,7 @@ class Bars extends Component {
 				</div>
 				<div className="row">
 					<div className="col-xs-12">
-						<ListBar list={bars} />
+						<ListBar list={list} />
 					</div>
 				</div>
 			</div>
@@ -23,8 +23,17 @@ class Bars extends Component {
 	}
 }
 
+const getVisibleBars = (list, filter) => {
+	if (filter) {
+		return list.filter(bar => bar.name.includes(filter));
+	}
+	else {
+		return list;
+	}
+}
+
 const mapStateToProps = state => {
 	const { bars } = state;
-	return { bars };
+	return { list: getVisibleBars(bars.list, bars.filterByName) };
 }
 export default connect(mapStateToProps)(Bars);

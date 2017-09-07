@@ -1,5 +1,8 @@
 import { Seed } from '../utils/seed';
 
 export const initialState = {
-	bars: Seed.bars()
+	bars: {
+		list: Seed.bars(),
+		filterByName: null,
+	}
 };

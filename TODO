@@ -11,3 +11,6 @@
 	-/bars
 	-/bars/:id/products
 	-/rounds/:id	(if ordered_at is different from NULL Take round functionality is not displayed)
+
+- Notes:
+	http://redux.js.org/docs/faq/CodeStructure.html#how-should-i-split-my-logic-between-reducers-and-action-creators-where-should-my-business-logic-go

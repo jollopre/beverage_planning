@@ -7,3 +7,6 @@ body {
 .btn, .panel, .form-control, .modal-content, .dropdown-menu {
 	border-radius: 0;
 }
+.input-group {
+	margin-bottom: 15px;
+}
