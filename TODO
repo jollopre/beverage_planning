@@ -1,5 +1,6 @@
+- Install react-router-redux
 - Seed for bar, products and association (current_prices)
-- Install react-router for handling URL routing
+- Link to using object rather than string with search attribute for filter by name at bars
 - Set up unit tests, specially for actions and reducers
 - Set up unit tests for presentational components
 - Page for list of bars (id, name, latlng, image_url) with functionalities: search or select item from list
@@ -9,7 +10,7 @@
 	- Take Round, ordered_at will be modified and list of products for bar showed again (e.g. redirect to /bars/:id/products)
 - URLs:
 	-/bars
-	-/bars/:id/products
+	-/bars/:id
 	-/rounds/:id	(if ordered_at is different from NULL Take round functionality is not displayed)
 
 - Notes:

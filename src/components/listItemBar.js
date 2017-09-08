@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 export default class ListItemBar extends Component {
 	render() {
@@ -7,9 +8,9 @@ export default class ListItemBar extends Component {
 		return (
 			<div className="media">
 			  <div className="media-left">
-			    <a href="#">
+			  	<Link to={`/bars/${bar.id}`}>
 			      <img className="media-object" src={bar.image_url} alt={bar.name} />
-			    </a>
+			    </Link>
 			  </div>
 			  <div className="media-body">
 			    <h4 className="media-heading">{bar.name}</h4>
