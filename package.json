@@ -4,8 +4,6 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "lodash.parseint": "^4.0.2",
-    "lodash.random": "^3.2.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",

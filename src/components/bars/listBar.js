@@ -5,8 +5,8 @@ import ListItemBar from './listItemBar';
 export default class ListBar extends Component {
 	render() {
 		const { list } = this.props;
-		const view = list.map(item => (<ListItemBar bar={item} key={item.id} />));
-		return <div>{view}</div>;
+		const view = list.map(item => (<ListItemBar key={item.id} bar={item} />));
+		return <div className="row">{view}</div>;
 	}
 }
 

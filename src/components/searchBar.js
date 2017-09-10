@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { filterByName } from '../actions/bars';
 
 export class SearchBar extends Component {
@@ -9,15 +10,15 @@ export class SearchBar extends Component {
 		this.onSubmit = this.onSubmit.bind(this);
 	}
 	onSubmit(e){
-		const { dispatch } = this.props;
+		const { filterByName } = this.props;
 		e.preventDefault();
 		if (this.input.value.trim()){
-			dispatch(filterByName(this.input.value));
+			filterByName(this.input.value);
 		}
 	}
 	render() {
 		return (
-			<form onSubmit={this.onSubmit}>
+			<form className="navbar-form navbar-right" onSubmit={this.onSubmit}>
 				<div className="input-group">
 					<label className="sr-only" htmlFor="searchBarInput">Type bar name</label>
 					<input
@@ -42,8 +43,14 @@ export class SearchBar extends Component {
 	}
 }
 
+const mapDispatchToProps = (dispatch, ownProps) => ({
+	filterByName: (name) => {
+		dispatch(filterByName({ history: ownProps.history, filter: name }));
+	}
+});
+
 SearchBar.propTypes = {
-	dispatch: PropTypes.func.isRequired,
+	filterByName: PropTypes.func.isRequired,
 };
 
-export default connect()(SearchBar);
+export default withRouter(connect(null, mapDispatchToProps)(SearchBar));

@@ -7,23 +7,25 @@ import {
 } from 'react-router-dom';
 import Header from './components/header';
 import Bars from './containers/bars';
-import Bar from './containers/bar';
-import Rounds from './containers/rounds';
+import BarContainer from './containers/barContainer';
+import RoundContainer from './containers/roundContainer';
 
 class App extends Component {
   render() {
     return (
-      <div className="container-fluid">
-      	<Header />
-      	<Router>
-	        <Switch>
-	        	<Route exact path="/bars" component={Bars} />
-	        	<Route exact path="/bars/:barId" component={Bar} />
-	        	<Route exact path="/rounds" component={Rounds} />
-	        	<Redirect from="/" to="/bars" />
-	        </Switch>
-        </Router>
-      </div>
+    	<Router>
+    		<div>
+		      	<Header />
+		      	<div className="container-fluid">
+					<Switch>
+				       	<Route exact path="/bars/:barId([0-9]+)" component={BarContainer} />
+				       	<Route exact path="/bars/:filterByName?" component={Bars} />
+				        <Route exact path="/rounds/:roundId([0-9]+)" component={RoundContainer} />
+				        <Redirect from="/" to="/bars" />
+				    </Switch>
+			    </div>
+		    </div>
+      	</Router>
     );
   }
 }

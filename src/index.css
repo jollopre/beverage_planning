@@ -4,7 +4,10 @@ body {
   font-family: sans-serif;
 }
 /* Overwrite for bootstrap*/
-.btn, .panel, .form-control, .modal-content, .dropdown-menu {
+.btn, .panel, .form-control, .modal-content,
+.dropdown-menu, .navbar, .thumbnail,
+.list-group-item:first-child, .list-group-item:last-child,
+.well, .alert {
 	border-radius: 0;
 }
 .input-group {

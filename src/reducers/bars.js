@@ -1,12 +1,10 @@
-import { BARS_FILTER_BY_NAME } from '../actions/bars';
+import { FILTER_BY_NAME_BARS } from '../actions/bars';
 
-export const bars = (state = { list: [], filterByName: null }, action) => {
+export const bars = (state = { byId: {}, filterByName: null }, action) => {
 	switch(action.type){
-		case BARS_FILTER_BY_NAME: 
-			return {
-				...state,
-				filterByName: action.filter,
-			}
+		case FILTER_BY_NAME_BARS: 
+			return Object.assign(
+				{}, state, { filterByName: action.filter });
 		default:
 			return state;
 	}

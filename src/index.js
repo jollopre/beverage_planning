@@ -13,6 +13,7 @@ const store = createStore(
 	rootReducer,
 	initialState
 );
+
 ReactDOM.render(
 	<Provider store={store}>
 		<App />

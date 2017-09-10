@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import SearchBar from '../components/searchBar';
-import ListBar from '../components/listBar';
+import ListBar from '../components/bars/listBar';
+import AlertInfo from '../components/alertInfo';
 
 class Bars extends Component {
 	render() {
-		const { list } = this.props;
+		const { list, filter } = this.props;
 		return (
 			<div>
 				<div className="row">
 					<div className="col-xs-12">
-						<SearchBar />
+						<ListBar list={list} />
 					</div>
 				</div>
 				<div className="row">
 					<div className="col-xs-12">
-						<ListBar list={list} />
+						<AlertInfo show={filter !== null && list.length === 0}>
+							<span>
+								There are no bars found for term: <strong>
+								{filter}</strong>
+							</span>
+						</AlertInfo>
 					</div>
 				</div>
 			</div>
@@ -23,17 +28,24 @@ class Bars extends Component {
 	}
 }
 
-const getVisibleBars = (list, filter) => {
+const getVisibleListOfBars = (map, filter) => {
+	// filter argument is either coming from the state or from the URL param (e.g. refreshing page)
+	const list = Object.keys(map).reduce((acc, id) => {
+			return acc.concat([map[id]]);
+		}, []);
 	if (filter) {
-		return list.filter(bar => bar.name.includes(filter));
+		const a = list.filter(bar => bar.name.includes(filter));
+		return a;
 	}
-	else {
-		return list;
-	}
+	return list;
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
 	const { bars } = state;
-	return { list: getVisibleBars(bars.list, bars.filterByName) };
+	const { match } = ownProps;
+	const filter = bars.filterByName || match.params.filterByName || null;
+	return { list: getVisibleListOfBars(bars.byId, filter), filter };
 }
+
+
 export default connect(mapStateToProps)(Bars);
